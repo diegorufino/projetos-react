@@ -1,4 +1,5 @@
 import React from 'react'
+import ProdutoService from '../../app/produtoService'
 
 const estadoInicial = {
     nome: '',
@@ -12,6 +13,11 @@ class CadastroProduto extends React.Component {
 
     state = estadoInicial
 
+    constructor(){
+        super()
+        this.service = new ProdutoService();
+    }
+
     onChange = (event) => {
         const valor = event.target.value
         const nomeDoCampo = event.target.name
@@ -20,7 +26,16 @@ class CadastroProduto extends React.Component {
     }
 
     onSubmit = (event) => {
-        console.log(this.state)
+        const produto = {
+            nome: this.state.nome,
+            sku: this.state.sku,
+            descricao: this.state.descricao,
+            preco: this.state.preco,
+            fornecedor: this.state.fornecedor
+        }
+
+        this.service.salvar(produto)
+        console.log('Salvo com Sucesso')
     }
 
     limpaCampos = () => {
