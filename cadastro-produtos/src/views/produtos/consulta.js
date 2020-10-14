@@ -1,10 +1,22 @@
 import React from 'react'
+import ProdutoService from '../../app/produtoService';
 
 export default class ConsultaProdutos extends React.Component{
 
     state = {
         produtos: []
     }
+
+    constructor(){
+        super()
+        this.service = new ProdutoService();
+    }
+
+    componentDidMount(){
+        const produtos = this.service.obterProdutos();
+        this.setState({ produtos })
+    }
+
     render(){
         return (
 

@@ -61,7 +61,7 @@ class CadastroProduto extends React.Component {
 
                     {this.state.sucesso &&
                         <div className="alert alert-dismissible alert-success">
-                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                        <button type="button" className="close" data-dismiss="alert">&times;</button>
                             <strong>Registro cadastrado com sucesso!</strong>
                         </div>
                     }       
@@ -71,7 +71,7 @@ class CadastroProduto extends React.Component {
                         this.state.errors.map(msg => {
                             return (
                                 <div className="alert alert-dismissible alert-danger">
-                                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                                    <button type="button" className="close" data-dismiss="alert">&times;</button>
                                     <strong>Erro!</strong> {msg}
                                 </div>
                             )

@@ -30,10 +30,16 @@ export default class ProdutoService {
         }
     }
 
+    obterProdutos = () => {
+        const produtos = localStorage.getItem(PRODUTOS)
+        return JSON.parse(produtos)
+    }
+
     salvar = (produto) => {
         this.validar(produto)
 
         let produtos = localStorage.getItem(PRODUTOS)
+        
         if(!produtos){
             produtos = []
         }else{
