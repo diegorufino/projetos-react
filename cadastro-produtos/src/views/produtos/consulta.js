@@ -18,7 +18,6 @@ class ConsultaProdutos extends React.Component{
     }
 
     preparaEditar = (sku) => {
-        console.log('sku: ', sku)
         this.props.history.push(`/cadastro-produtos/${sku}`)
     }
 
