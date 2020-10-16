@@ -35,7 +35,9 @@ class CadastroProduto extends React.Component {
             descricao: this.state.descricao,
             preco: this.state.preco,
             fornecedor: this.state.fornecedor,
-            sucesso: false
+            sucesso: false,
+            errors: [],
+            atualizando: false
         }
 
         try{
@@ -60,7 +62,7 @@ class CadastroProduto extends React.Component {
 
             if(resultado.length === 1){
                 const produtoEncotrado = resultado[0]
-                this.setState({ ...produtoEncotrado })
+                this.setState({ ...produtoEncotrado, atualizando: true })
             }
         }
     }
@@ -69,7 +71,7 @@ class CadastroProduto extends React.Component {
         return(
             <div className="card">
                 <div className="card-header">
-                    Cadastro de Produto
+                    { this.state.atualizando ? 'Atualização' : 'Cadastro'} de Produto
                 </div>
                 <div className="card-body">
 
@@ -111,6 +113,7 @@ class CadastroProduto extends React.Component {
                                 <input 
                                     type="text" 
                                     name="sku" 
+                                    disabled={this.state.atualizando}
                                     value={this.state.sku} 
                                     onChange={this.onChange}
                                     className="form-control" 
@@ -163,7 +166,9 @@ class CadastroProduto extends React.Component {
 
                     <div className="row">
                         <div className="col-md-1">
-                            <button onClick={this.onSubmit} className="btn btn-success">Salvar</button>
+                            <button onClick={this.onSubmit} className="btn btn-success">
+                                {this.state.atualizando ? 'Atualizar' : 'Salvar'}
+                            </button>
                         </div>
 
                         <div className="col-md-1">
