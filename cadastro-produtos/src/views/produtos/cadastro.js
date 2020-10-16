@@ -58,8 +58,6 @@ class CadastroProduto extends React.Component {
         if (sku){
             const resultado = this.service.obterProdutos().filter(produto => produto.sku === sku)
 
-            console.log(this.service.obterProdutos());
-
             if(resultado.length === 1){
                 const produtoEncotrado = resultado[0]
                 this.setState({ ...produtoEncotrado })
